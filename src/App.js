@@ -3,26 +3,21 @@ import { Space, Typography, Select, Col, Row, Button, Modal } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { isEqual } from "lodash";
 import Adfilter from "./test/adfilter.js";
-
-import MultiSelect from "./test/testdate.js";
-import MySelect from "./test/selectorcheck.js";
 import Dshow from "./test/dataShow.js";
 
 const { Text } = Typography;
 
-const options = [];
-const ops = ["Naver", "Next", "Google", "Facebook"];
-
-for (let i = 0; i < ops.length; i++) {
-  const value = ops[i];
-  options.push({
-    label: `${value}`,
-    value,
-  });
-}
-
 const App = () => {
+  const [adList, setAdList] = useState([]);
+  const [newadList, setNewAdList] = useState([]);
+  const adChange = (value) => {
+    const filteredValue = value.filter((option) => option !== "selectAll");
+    if (!isEqual(filteredValue, adList)) {
+      setAdList(filteredValue);
+    }
+  };
   return (
     <>
       <Space direction="vertical" style={{ width: "100%" }}>
@@ -37,7 +32,7 @@ const App = () => {
               </Text>
             </Col>
             <Col>
-              <Adfilter />
+              <Adfilter onValueChange={adChange} />
             </Col>
             <Col></Col>
             <Dshow />
@@ -48,6 +43,11 @@ const App = () => {
           </Row>
         </div>
       </Space>
+      <div>
+        <h2>선택한 분석 대상</h2>
+        <p>{adList}</p>
+        <div style={{ border: "1px solid", padding: "16px" }}></div>
+      </div>
     </>
   );
 };

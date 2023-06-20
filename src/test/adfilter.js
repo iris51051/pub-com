@@ -14,20 +14,18 @@ const options = [
   { label: "너구리", value: "너구리" },
 ];
 
-const Adfilter = () => {
+const Adfilter = ({ onValueChange }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const [filterSelect, setFilterSelect] = useState([]);
-  // const [clickSel, setClickSel] = useState();
   let clickSel = "";
   const setSelect = (event) => {
     clickSel = event.target.value;
     console.log("setSelect함수의 clickSel=", clickSel);
   };
   const handleCheckboxChange = (checkedValues) => {
-    // setSelectedOptions(checkedValues);
     console.log("1번");
     console.log("checkedValues", checkedValues);
     console.log("selectedOptions", selectedOptions);
@@ -39,11 +37,9 @@ const Adfilter = () => {
       options.length
     ) {
       console.log("2번");
-      // If all options are selected, include the "Select All" checkbox in the selected options
       setSelectedOptions([...checkedValues, "selectAll"]);
     } else if (filteredOptions.length === options.length) {
       console.log("3번");
-      // Remove the "Select All" checkbox from the selected options
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
@@ -57,9 +53,6 @@ const Adfilter = () => {
         console.log("4번");
         if (selectedOptions.includes(clickSel)) {
           checkedValues = checkedValues.filter((option) => option !== clickSel);
-          const filterOptions = selectedOptions.filter(
-            (option) => option !== clickSel
-          );
         }
         console.log("5번 진입");
         setSelectedOptions([...selectedOptions, ...checkedValues]);
@@ -73,9 +66,6 @@ const Adfilter = () => {
       );
     } else {
       if (selectedOptions.includes(clickSel))
-        // setSearchSelect(
-        //   selectedOptions.filter((option) => option !== 'selectAll')
-        // );
         setSelectedOptions(
           selectedOptions.filter(
             (option) => option !== clickSel && option !== "selectAll"
@@ -175,7 +165,7 @@ const Adfilter = () => {
       </Menu>
     </div>
   );
-
+  onValueChange(selectedOptions);
   return (
     <Dropdown
       overlay={menu}
