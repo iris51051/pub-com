@@ -45,7 +45,7 @@ const App = () => {
       </Space>
       <div>
         <h2>선택한 분석 대상</h2>
-        <p>{adList}</p>
+        <p>{adList.join(", ")}</p>
         <div style={{ border: "1px solid", padding: "16px" }}></div>
       </div>
     </>

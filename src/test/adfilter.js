@@ -23,23 +23,14 @@ const Adfilter = ({ onValueChange }) => {
   let clickSel = "";
   const setSelect = (event) => {
     clickSel = event.target.value;
-    console.log("setSelect함수의 clickSel=", clickSel);
   };
   const handleCheckboxChange = (checkedValues) => {
-    console.log("1번");
-    console.log("checkedValues", checkedValues);
-    console.log("selectedOptions", selectedOptions);
-    console.log("filteredOptions", filteredOptions);
-    console.log("handleCheckboxChang함수의 clickSel=", clickSel);
-
     if (
       checkedValues.filter((option) => option !== "selectAll").length ===
       options.length
     ) {
-      console.log("2번");
       setSelectedOptions([...checkedValues, "selectAll"]);
     } else if (filteredOptions.length === options.length) {
-      console.log("3번");
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
@@ -50,16 +41,10 @@ const Adfilter = ({ onValueChange }) => {
           });
         })
       ) {
-        console.log("4번");
         if (selectedOptions.includes(clickSel)) {
           checkedValues = checkedValues.filter((option) => option !== clickSel);
         }
-        console.log("5번 진입");
         setSelectedOptions([...selectedOptions, ...checkedValues]);
-        console.log("filterSelect", filterSelect);
-        console.log("checkedValues", checkedValues);
-        console.log("selectedOptions", selectedOptions);
-        console.log("filteredOptions", filteredOptions);
       }
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
