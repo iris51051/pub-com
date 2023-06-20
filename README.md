@@ -1,4 +1,8 @@
 사용한 라이브러리
+andt design
+FontAwesome
+rsuite(미사용)
+lodash
 
 달력
 react-date-range
@@ -14,7 +18,7 @@ yarn add antd
 import { Button } from 'antd';
 
 아이콘
-FaontAwesome
+FontAwesome
 
 svg 추가
 방법1.
@@ -37,3 +41,7 @@ npm i --save @fortawesome/react-fontawesome@latest
 
 Resuit
 yarn add rsuite
+
+lodash
+중복 검사 해결 라이브러리
+yarn add lodash
