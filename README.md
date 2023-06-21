@@ -1,15 +1,13 @@
 사용한 라이브러리
 andt design
 FontAwesome
-rsuite(미사용)
+
 lodash
 
 달력
-react-date-range
+rsuite
 
-npm install react-date-range
-
-import { DateRangePicker } from 'react-date-range';
+npm install rsuite
 
 UI디자인
 
@@ -38,9 +36,6 @@ yarn add @fortawesome/free-regular-svg-icons
 
 리엑트컴포넌트
 npm i --save @fortawesome/react-fontawesome@latest
-
-Resuit
-yarn add rsuite
 
 lodash
 중복 검사 해결 라이브러리
