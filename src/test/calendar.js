@@ -19,22 +19,27 @@ const predefinedRanges = [
     placement: "left",
   },
   {
-    label: "지난 1주일",
+    label: "최근 7일",
     value: [subDays(new Date(), 6), new Date()],
     placement: "left",
   },
   {
-    label: "Last 30 days",
+    label: "최근 30일",
     value: [subDays(new Date(), 29), new Date()],
     placement: "left",
   },
   {
-    label: "This month",
+    label: "최근 90일",
+    value: [subDays(new Date(), 89), new Date()],
+    placement: "left",
+  },
+  {
+    label: "이번 달",
     value: [startOfMonth(new Date()), new Date()],
     placement: "left",
   },
   {
-    label: "Last month",
+    label: "지난 달",
     value: [
       startOfMonth(addMonths(new Date(), -1)),
       endOfMonth(addMonths(new Date(), -1)),
@@ -42,12 +47,12 @@ const predefinedRanges = [
     placement: "left",
   },
   {
-    label: "This year",
+    label: "이번 년도",
     value: [new Date(new Date().getFullYear(), 0, 1), new Date()],
     placement: "left",
   },
   {
-    label: "Last year",
+    label: "지난 년도",
     value: [
       new Date(new Date().getFullYear() - 1, 0, 1),
       new Date(new Date().getFullYear(), 0, 0),
