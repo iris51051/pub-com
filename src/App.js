@@ -6,6 +6,7 @@ import { useState } from "react";
 import { isEqual } from "lodash";
 import Adfilter from "./test/adfilter.js";
 import Dshow from "./test/dataShow.js";
+import Calendar from "./test/calendar.js";
 
 const { Text } = Typography;
 
@@ -13,7 +14,6 @@ const App = () => {
   const [adList, setAdList] = useState([]);
   const adChange = (value) => {
     const filteredValue = value.filter((option) => option !== "selectAll");
-
     //제거하지 말것 selectAll 삭제 후 setAdList에 추가할 때 무한 루프에 들어감.
     if (!isEqual(filteredValue, adList)) {
       setAdList(filteredValue);
@@ -41,6 +41,9 @@ const App = () => {
               기간 선택
               <FontAwesomeIcon icon={faCircleChevronRight} />
             </Text>
+            <Col>
+              <Calendar />
+            </Col>
           </Row>
         </div>
       </Space>
