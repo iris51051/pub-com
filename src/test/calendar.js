@@ -1,11 +1,13 @@
 import React from "react";
 
-import { DateRangePicker, Stack } from "rsuite";
+import { DateRangePicker, CustomProvider } from "rsuite";
 import subDays from "date-fns/subDays";
 import addDays from "date-fns/addDays";
 import startOfMonth from "date-fns/startOfMonth";
 import endOfMonth from "date-fns/endOfMonth";
 import addMonths from "date-fns/addMonths";
+
+import ko_KR from "rsuite/locales/ko_KR";
 
 const predefinedRanges = [
   {
@@ -62,12 +64,13 @@ const predefinedRanges = [
 ];
 
 const Calendar = () => (
-  <Stack direction="column" spacing={8} alignItems="flex-start">
+  <CustomProvider locale={ko_KR}>
     <DateRangePicker
+      size="sm"
       ranges={predefinedRanges}
       placeholder="조회 기간 선택"
-      style={{ width: 210 }}
+      editable={false}
     />
-  </Stack>
+  </CustomProvider>
 );
 export default Calendar;

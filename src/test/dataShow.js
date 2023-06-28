@@ -8,6 +8,7 @@ const handleChange = (value) => {
 const Dshow = () => (
   <Space wrap>
     <Select
+      size="small"
       defaultValue="1"
       style={{
         width: 210,

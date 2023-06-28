@@ -19,33 +19,38 @@ const Adfilter = ({ onValueChange }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
-  const [filterSelect, setFilterSelect] = useState([]);
   let clickSel = "";
   const setSelect = (event) => {
     clickSel = event.target.value;
   };
   const handleCheckboxChange = (checkedValues) => {
     if (
+      //모든 option이 선택 or selectAll 선택
       checkedValues.filter((option) => option !== "selectAll").length ===
       options.length
     ) {
       setSelectedOptions([...checkedValues, "selectAll"]);
     } else if (filteredOptions.length === options.length) {
+      //모든 옵션이 선택되지 않았을 때
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
       if (
+        //검색을 통해 목록 선택 진입 후 기존에 선택된 목록 중에 검색한 옵션의 목록이 있는가?
         checkedValues.every((item) => {
           return filteredOptions.some((filteredOptionsItem) => {
             return filteredOptionsItem.value === item;
           });
         })
       ) {
+        //선택된 목록 중에 clicksel(검색 후 선택한 체크박스)의 값을 가지고 있는게 있는가?
         if (selectedOptions.includes(clickSel)) {
+          //true==>clicksel을 off
           checkedValues = checkedValues.filter((option) => option !== clickSel);
-        }
+        } //false==>clicksel을 on
         setSelectedOptions([...selectedOptions, ...checkedValues]);
       }
+      //간혹 selectAll이 안지워지는 경우가 생기기에 selectAll을 삭제.
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
@@ -94,6 +99,7 @@ const Adfilter = ({ onValueChange }) => {
     }
   };
 
+  //검색했을 때의 옵션 목록
   const filteredOptions = options.filter((option) =>
     option.label.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -161,6 +167,7 @@ const Adfilter = ({ onValueChange }) => {
       <Input
         className="disp"
         style={{ width: "130px" }}
+        size="small"
         value={`선택 광고주 (${
           selectedOptions.length > options.length
             ? selectedOptions.length - 1
