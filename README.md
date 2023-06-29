@@ -57,3 +57,5 @@ import { GrFilter } from "react-icons/gr";
 
 아이콘 검색은 아래 주소
 https://react-icons.github.io/react-icons
+
+filterTagAdder tag와 Drawer 분리해서 사용시 seperate TagAdder폴더 내의 js파일 사용

@@ -8,7 +8,6 @@ import Adfilter from "./test/adfilter.js";
 import Dshow from "./test/dataShow.js";
 import Calendar from "./test/calendar.js";
 import FilterTagAdder from "./test/filterTagAdder.js";
-import FilterTagDrawer from "./test/filterTagDrawer.js";
 const { Text } = Typography;
 
 const App = () => {
@@ -20,27 +19,6 @@ const App = () => {
     if (!isEqual(filteredValue, adList)) {
       setAdList(filteredValue);
     }
-  };
-
-  //filterTag 추가
-  const [selectedValue, setSelectedValue] = useState([]);
-  const [updateValue, setUpdateValue] = useState([]);
-  const [DrawerVisible, setDrawerVisible] = useState(false);
-  const tagChange = (data) => {
-    if (Object.keys(data).length !== 0) {
-      setSelectedValue(data);
-    } else {
-      setSelectedValue(data);
-    }
-  };
-  const handleTagClick = (isVisible) => {
-    setDrawerVisible(isVisible);
-  };
-  const handleDrawerClose = (isVisible) => {
-    setDrawerVisible(isVisible);
-  };
-  const handleTagListChange = (updatedValue) => {
-    setUpdateValue(updatedValue);
   };
 
   return (
@@ -76,17 +54,7 @@ const App = () => {
           )}
         </div>
         <div style={{ border: "1px solid", padding: "16px" }}>
-          <FilterTagAdder
-            selectedValue={selectedValue}
-            onValueChange={handleTagListChange}
-            onTagClick={handleTagClick}
-          />
-          <FilterTagDrawer
-            onValueChange={tagChange}
-            DrawerVisible={DrawerVisible}
-            onCloseDrawer={handleDrawerClose}
-            updateValue={updateValue}
-          />
+          <FilterTagAdder />
         </div>
       </div>
     </>
