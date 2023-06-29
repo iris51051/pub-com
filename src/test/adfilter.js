@@ -17,7 +17,6 @@ const options = [
 const Adfilter = ({ onValueChange }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
   const [searchValue, setSearchValue] = useState("");
   let clickSel = "";
   const setSelect = (event) => {
@@ -30,30 +29,18 @@ const Adfilter = ({ onValueChange }) => {
       options.length
     ) {
       setSelectedOptions([...checkedValues, "selectAll"]);
+
+      //모든 옵션이 선택되지 않았을 때(ex. 5개중에 4개만 선택됨)
     } else if (filteredOptions.length === options.length) {
-      //모든 옵션이 선택되지 않았을 때
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
-      if (
-        //검색을 통해 목록 선택 진입 후 기존에 선택된 목록 중에 검색한 옵션의 목록이 있는가?
-        checkedValues.every((item) => {
-          return filteredOptions.some((filteredOptionsItem) => {
-            return filteredOptionsItem.value === item;
-          });
-        })
-      ) {
-        //선택된 목록 중에 clicksel(검색 후 선택한 체크박스)의 값을 가지고 있는게 있는가?
-        if (selectedOptions.includes(clickSel)) {
-          //true==>clicksel을 off
-          checkedValues = checkedValues.filter((option) => option !== clickSel);
-        } //false==>clicksel을 on
-        setSelectedOptions([...selectedOptions, ...checkedValues]);
-      }
-      //간혹 selectAll이 안지워지는 경우가 생기기에 selectAll을 삭제.
+
+      // 간혹 selectAll이 안지워지는 경우가 생기기에 selectAll을 삭제.
       setSelectedOptions(
         checkedValues.filter((value) => value !== "selectAll")
       );
+      //검색한 옵션들 중 하나라도 선택되지 않은 경우
     } else {
       if (selectedOptions.includes(clickSel))
         setSelectedOptions(
@@ -62,6 +49,7 @@ const Adfilter = ({ onValueChange }) => {
           )
         );
       else {
+        //모든 옵션이 선택된 상태
         if (selectedOptions.length === options.length - 1) {
           setSelectedOptions([...selectedOptions, clickSel, "selectAll"]);
         } else {
@@ -71,10 +59,7 @@ const Adfilter = ({ onValueChange }) => {
     }
   };
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
+  //검색값 작성시 변경
   const handleSearchChange = (e) => {
     setSearchValue(e.target.value);
   };
@@ -82,11 +67,11 @@ const Adfilter = ({ onValueChange }) => {
   const handleDropdownVisibleChange = (visible) => {
     setDropdownVisible(visible);
     if (!visible) {
-      setInputValue("");
       setSearchValue("");
     }
   };
 
+  //체크박스 전체선택 및 해제
   const handleSelectAll = (e) => {
     const { checked } = e.target;
     if (checked) {
@@ -95,7 +80,7 @@ const Adfilter = ({ onValueChange }) => {
         "selectAll",
       ]);
     } else {
-      setSelectedOptions([]);
+      setSelectedOptions([]); //빈객체 저장
     }
   };
 
@@ -121,6 +106,7 @@ const Adfilter = ({ onValueChange }) => {
             }}
           />
         </Menu.Item>
+        {/* 검색값이 존재하지 않을 때에만 전체선택 코드 블록 실행 */}
         {!searchValue && (
           <Menu.Item key="selectAll">
             <Checkbox
@@ -138,6 +124,7 @@ const Adfilter = ({ onValueChange }) => {
             </Checkbox>
           </Menu.Item>
         )}
+        {/* Divider : 메뉴 수직분할선 */}
         <Menu.Divider style={{ marginTop: -4 }} />
         {filteredOptions.length === 0 ? (
           <div style={{ marginLeft: 10 }}>검색 결과 없음.</div>
@@ -145,7 +132,7 @@ const Adfilter = ({ onValueChange }) => {
           <CheckboxGroup
             style={{
               display: "flex",
-              flexDirection: "column",
+              flexDirection: "column", //세로 방향 표시
             }}
             options={filteredOptions}
             value={selectedOptions.filter((value) => value !== "selectAll")}
@@ -172,8 +159,7 @@ const Adfilter = ({ onValueChange }) => {
           selectedOptions.length > options.length
             ? selectedOptions.length - 1
             : selectedOptions.length
-        }/${options.length})`}
-        onChange={handleInputChange}
+        }/${options.length})`} // => 선택된 광고주 수/ 전체 광고주 수
         onClick={() => setDropdownVisible(!dropdownVisible)}
         readOnly
       />
