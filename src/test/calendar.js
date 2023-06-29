@@ -1,5 +1,5 @@
 import React from "react";
-
+import "rsuite/dist/rsuite.min.css";
 import { DateRangePicker, CustomProvider } from "rsuite";
 import subDays from "date-fns/subDays";
 import addDays from "date-fns/addDays";

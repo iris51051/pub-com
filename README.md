@@ -9,7 +9,9 @@ lodash
 =========================
 
 달력
-andt design
+rsuite
+npm i rsuite --save
+yarn add rsuite
 
 UI디자인
 
@@ -59,3 +61,9 @@ import { GrFilter } from "react-icons/gr";
 https://react-icons.github.io/react-icons
 
 filterTagAdder tag와 Drawer 분리해서 사용시 seperate TagAdder폴더 내의 js파일 사용
+
+'react-scripts'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+배치 파일이 아닙니다.
+
+=> yarn ==> yarn add react-scripts
+=> npm ==> npm install -save react-scripts
