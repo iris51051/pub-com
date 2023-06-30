@@ -14,31 +14,37 @@ const predefinedRanges = [
     label: "오늘",
     value: [new Date(), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "어제",
     value: [addDays(new Date(), -1), addDays(new Date(), -1)],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "최근 7일",
     value: [subDays(new Date(), 6), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "최근 30일",
     value: [subDays(new Date(), 29), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "최근 90일",
     value: [subDays(new Date(), 89), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "이번 달",
     value: [startOfMonth(new Date()), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "지난 달",
@@ -47,11 +53,13 @@ const predefinedRanges = [
       endOfMonth(addMonths(new Date(), -1)),
     ],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "이번 년도",
     value: [new Date(new Date().getFullYear(), 0, 1), new Date()],
     placement: "left",
+    closeOverlay: false,
   },
   {
     label: "지난 년도",
@@ -60,6 +68,7 @@ const predefinedRanges = [
       new Date(new Date().getFullYear(), 0, 0),
     ],
     placement: "left",
+    closeOverlay: false,
   },
 ];
 
