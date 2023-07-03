@@ -23,10 +23,10 @@ const App = () => {
 
   return (
     <>
-      <div style={{ border: "1px solid", padding: "16px" }}>
+      <div style={{ border: "1px solid #e8ecee", padding: "25px" }}>
         <Space size="large">
           <Text strong level={4}>
-            분석대상 선택
+            분석대상 선택&nbsp;
             <FontAwesomeIcon icon={faCircleChevronRight} />
           </Text>
 
@@ -34,17 +34,19 @@ const App = () => {
 
           <Dshow />
           <Text strong level={4}>
-            기간 선택
+            기간 선택&nbsp;
             <FontAwesomeIcon icon={faCircleChevronRight} />
           </Text>
           <Calendar />
         </Space>
       </div>
       <div>
-        <h2>선택한 분석 대상</h2>
-        <div style={{ border: "1px solid", padding: "16px" }}>
+        <br />
+        <h4 className="selected-analysis-targer">선택한 분석 대상</h4>
+        <div className="selected-analysis-targer-div">
+          <span className="selected-analysis-targer-span">광고주 </span>
           {adList.length <= dispop ? (
-            <p>{adList.join(", ")}</p>
+            <p className="selected-analysis-targer-p">{adList.join(", ")}</p>
           ) : (
             <>
               <p>{`${adList.slice(0, dispop).join(", ")} 외 ${

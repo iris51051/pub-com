@@ -1,18 +1,18 @@
 import React from "react";
 import "../index.css";
-import { Select, Space } from "antd";
+import { Select } from "antd";
+import { VscTriangleDown } from "react-icons/vsc";
 
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
 const Dshow = () => (
-  <Space wrap>
+  <div>
     <Select
+      style={{ width: "100%" }}
+      suffixIcon={<VscTriangleDown style={{ color: "black" }} />}
       size="small"
       defaultValue="1"
-      style={{
-        width: 210,
-      }}
       onChange={handleChange}
       options={[
         {
@@ -25,6 +25,6 @@ const Dshow = () => (
         },
       ]}
     />
-  </Space>
+  </div>
 );
 export default Dshow;

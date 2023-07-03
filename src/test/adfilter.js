@@ -1,6 +1,7 @@
 import React from "react";
 import { Checkbox, Dropdown, Input, Menu } from "antd";
 import { useState } from "react";
+import { DownOutlined } from "@ant-design/icons";
 
 const CheckboxGroup = Checkbox.Group;
 
@@ -90,29 +91,21 @@ const Adfilter = ({ onValueChange }) => {
   );
 
   const menu = (
-    <div style={{ maxHeight: 200, overflowY: "auto" }}>
+    <div className="adFilterDiv">
       <Menu>
         <Menu.Item key="search">
           <Input
             className="adSearch"
-            placeholder="광고주 검색"
+            placeholder="Search"
             value={searchValue}
             onChange={handleSearchChange}
-            style={{
-              marginBottom: 3,
-              marginLeft: -12,
-              marginRight: -10,
-              width: "120px",
-            }}
+            style={{ color: "black" }}
           />
         </Menu.Item>
         {/* 검색값이 존재하지 않을 때에만 전체선택 코드 블록 실행 */}
         {!searchValue && (
           <Menu.Item key="selectAll">
             <Checkbox
-              style={{
-                marginLeft: -12,
-              }}
               checked={selectedOptions.length === options.length + 1}
               indeterminate={
                 selectedOptions.length > 0 &&
@@ -134,6 +127,7 @@ const Adfilter = ({ onValueChange }) => {
               display: "flex",
               flexDirection: "column", //세로 방향 표시
             }}
+            className="adCheckboxGroup"
             options={filteredOptions}
             value={selectedOptions.filter((value) => value !== "selectAll")}
             onChange={handleCheckboxChange}
@@ -151,18 +145,34 @@ const Adfilter = ({ onValueChange }) => {
       onOpenChange={handleDropdownVisibleChange}
       trigger={["click"]}
     >
-      <Input
-        className="disp"
-        style={{ width: "130px" }}
-        size="small"
-        value={`선택 광고주 (${
-          selectedOptions.length > options.length
-            ? selectedOptions.length - 1
-            : selectedOptions.length
-        }/${options.length})`} // => 선택된 광고주 수/ 전체 광고주 수
-        onClick={() => setDropdownVisible(!dropdownVisible)}
-        readOnly
-      />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
+        }}
+      >
+        <Input
+          className="disp"
+          style={{ width: "210px" }}
+          size="small"
+          value={`선택 광고주 (${
+            selectedOptions.length > options.length
+              ? selectedOptions.length - 1
+              : selectedOptions.length
+          }/${options.length})`} // => 선택된 광고주 수/ 전체 광고주 수
+          onClick={() => setDropdownVisible(!dropdownVisible)}
+          readOnly
+        />
+        <DownOutlined
+          style={{
+            position: "absolute",
+            right: "12px",
+            fontSize: "11px",
+            color: "#c2c2c2",
+          }}
+        />
+      </div>
     </Dropdown>
   );
 };

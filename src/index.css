@@ -36,3 +36,122 @@ code {
 .DrawerContent {
   background: #fff;
 }
+/* 달력 스타일 */
+.rs-picker-daterange-header {
+  visibility: hidden;
+  padding: 0px 0px !important;
+  height: 0;
+}
+.rs-picker-daterange-predefined {
+  height: 330px !important;
+}
+.rs-picker-daterange {
+  width: 210px;
+}
+
+/* 세부 디자인 추가 */
+.ant-space-item .ant-input {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+.ant-select .ant-select-selector {
+  height: 34.42px !important;
+  align-items: center;
+}
+
+.ant-select-selector .ant-select-selection-item {
+  font-size: 13px;
+}
+
+.ant-select .ant-select-selector {
+  padding: 6px 12px !important;
+}
+
+.rs-picker .rs-picker-toggle {
+  padding: 6px 12px !important;
+}
+
+.rs-picker-toggle .rs-btn .rs-btn-default .rs-btn-sm {
+  padding: 7px 12px;
+}
+
+.rs-stack-item {
+  font-size: 13px !important;
+  font-weight: 600;
+}
+
+.rs-picker-toggle {
+  height: 34.42px;
+}
+
+/* 선택한 분석 대상 */
+.selected-analysis-targer {
+  font-weight: 600;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  margin: 10px 0;
+  font-family: "Rubik", sans-serif;
+  color: black;
+}
+
+.selected-analysis-targer-div {
+  border: 1px solid rgba(120, 130, 140, 0.13);
+  border-left: 3px solid #ffdc29 !important;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+}
+
+.selected-analysis-targer-p {
+  line-height: 1.6;
+  margin: 0 0 10px;
+  font-weight: 600;
+  font-size: 13px !important;
+  color: black;
+}
+
+.selected-analysis-targer-span {
+  background-color: rgb(122, 206, 76);
+  color: #fff;
+  border-radius: 60px !important;
+  padding: 4px 12px 3px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 11px;
+}
+
+/* 선택 광고주 input */
+.ant-dropdown-menu-title-content .adSearch {
+  border: none;
+  border-bottom: 1px solid #eee;
+  width: 180px !important;
+  margin-right: -10px;
+  font-size: 12px;
+}
+
+.ant-dropdown-menu-title-content .adSearch::placeholder {
+  color: black;
+}
+
+.ant-dropdown-menu .ant-dropdown-menu-item {
+  padding-left: 30px !important;
+  padding: 8px !important;
+  border-bottom: #eee;
+}
+
+.ant-checkbox-wrapper {
+  font-size: 12px !important;
+}
+
+.ant-checkbox-group .ant-checkbox-wrapper {
+  padding: 8px !important;
+  border-bottom: 1px solid #eee;
+}
+
+.adFilterDiv {
+  border: 1px solid #eee;
+  max-height: 300px !important;
+  overflow: auto;
+  color: #263238;
+}
