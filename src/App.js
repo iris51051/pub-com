@@ -5,19 +5,30 @@ import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { isEqual } from "lodash";
 import Adfilter from "./test/adfilter.js";
+import Mdfilter from "./test/mdfilter.js";
 import Dshow from "./test/dataShow.js";
 import Calendar from "./test/calendar.js";
 import FilterTagAdder from "./test/filterTagAdder.js";
+
 const { Text } = Typography;
 
 const App = () => {
   const dispop = 10;
   const [adList, setAdList] = useState([]);
+  const [mdList, setMdList] = useState([]);
+
   const adChange = (value) => {
-    const filteredValue = value.filter((option) => option !== "selectAll");
+    const AdfilteredValue = value.filter((option) => option !== "selectAll");
     //제거하지 말것 selectAll 삭제 후 setAdList에 추가할 때 무한 루프에 들어감.
-    if (!isEqual(filteredValue, adList)) {
-      setAdList(filteredValue);
+    if (!isEqual(AdfilteredValue, adList)) {
+      setAdList(AdfilteredValue);
+    }
+  };
+  const mdChange = (value) => {
+    const MdfilteredValue = value.filter((option) => option !== "selectAll");
+    //제거하지 말것 selectAll 삭제 후 setAdList에 추가할 때 무한 루프에 들어감.
+    if (!isEqual(MdfilteredValue, mdList)) {
+      setMdList(MdfilteredValue);
     }
   };
 
@@ -31,7 +42,7 @@ const App = () => {
           </Text>
 
           <Adfilter onValueChange={adChange} />
-
+          <Mdfilter onValueChange={mdChange} />
           <Dshow />
           <Text strong level={4}>
             기간 선택&nbsp;
@@ -51,6 +62,16 @@ const App = () => {
             <>
               <p>{`${adList.slice(0, dispop).join(", ")} 외 ${
                 adList.length - dispop
+              }개`}</p>
+            </>
+          )}
+          <span className="selected-analysis-targer-span">매체 </span>
+          {mdList.length <= dispop ? (
+            <p className="selected-analysis-targer-p">{mdList.join(", ")}</p>
+          ) : (
+            <>
+              <p>{`${mdList.slice(0, dispop).join(", ")} 외 ${
+                mdList.length - dispop
               }개`}</p>
             </>
           )}

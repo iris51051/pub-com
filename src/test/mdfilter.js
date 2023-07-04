@@ -12,10 +12,9 @@ const options = [
   { label: "페이스북", value: "페이스북" },
   { label: "인스타그램", value: "인스타그램" },
   { label: "트위터", value: "트위터" },
-  { label: "너구리", value: "너구리" },
 ];
 
-const Adfilter = ({ onValueChange }) => {
+const Mdfilter = ({ onValueChange }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -156,11 +155,11 @@ const Adfilter = ({ onValueChange }) => {
           className="disp"
           style={{ width: "210px" }}
           size="small"
-          value={`광고주 선택 (${
+          value={`매체 선택 (${
             selectedOptions.length > options.length
               ? selectedOptions.length - 1
               : selectedOptions.length
-          }/${options.length})`} // => 선택된 광고주 수/ 전체 광고주 수
+          }/${options.length})`} // => 선택된 매체 수/ 전체 매체 수
           onClick={() => setDropdownVisible(!dropdownVisible)}
           readOnly
         />
@@ -177,4 +176,4 @@ const Adfilter = ({ onValueChange }) => {
   );
 };
 
-export default Adfilter;
+export default Mdfilter;
