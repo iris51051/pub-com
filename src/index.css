@@ -48,7 +48,9 @@ code {
 .rs-picker-daterange {
   width: 210px;
 }
-
+.rs-picker-toolbar {
+  justify-content: flex-end;
+}
 /* 세부 디자인 추가 */
 .ant-space-item .ant-input {
   padding: 6px 12px;

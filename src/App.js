@@ -4,11 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { isEqual } from "lodash";
-import Adfilter from "./test/adfilter.js";
-import Mdfilter from "./test/mdfilter.js";
-import Dshow from "./test/dataShow.js";
-import Calendar from "./test/calendar.js";
-import FilterTagAdder from "./test/filterTagAdder.js";
+import { Adfilter, Mdfilter } from "./test/adfilter.js";
+import { Dshow } from "./test/dataShow.js";
+import { Calendar } from "./test/calendar.js";
+import { FilterTagAdder } from "./test/filterTagAdder.js";
 
 const { Text } = Typography;
 

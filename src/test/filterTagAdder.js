@@ -59,7 +59,7 @@ for (let i = 0; i < 30; i++) {
   });
 }
 
-const FilterTagAdder = () => {
+export const FilterTagAdder = () => {
   const [visible, setVisible] = useState(false);
   const [filter, setFilter] = useState({});
   const [tagValue, setTagValue] = useState([]);
@@ -352,4 +352,3 @@ const FilterTagAdder = () => {
     </>
   );
 };
-export default FilterTagAdder;

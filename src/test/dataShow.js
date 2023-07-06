@@ -6,7 +6,7 @@ import { VscTriangleDown } from "react-icons/vsc";
 const handleChange = (value) => {
   console.log(`selected ${value}`);
 };
-const Dshow = () => (
+export const Dshow = () => (
   <div>
     <Select
       style={{ width: "100%" }}
@@ -27,4 +27,3 @@ const Dshow = () => (
     />
   </div>
 );
-export default Dshow;

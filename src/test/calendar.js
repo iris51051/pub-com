@@ -9,7 +9,7 @@ import endOfMonth from "date-fns/endOfMonth";
 import addMonths from "date-fns/addMonths";
 import koKR from "rsuite/locales/ko_KR";
 
-const CustomDateRangePicker = () => {
+export const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState([]);
   const [PickedRange, setPickedRange] = useState([new Date(), new Date()]);
   const [startDate, setStartDate] = useState(new Date());
@@ -99,6 +99,7 @@ const CustomDateRangePicker = () => {
       value: PickedRange,
       readOnly: true,
       closeOverlay: false,
+      justifyContent: "flex-end",
     },
   ];
 
@@ -109,16 +110,19 @@ const CustomDateRangePicker = () => {
   //DateRangePicker 기간 삭제시 PickedRange 초기화
   const resetRange = () => {
     setPickedRange([new Date(), new Date()]);
+    setSelectedDate([]);
   };
 
   //달력 선택 안하고 닫을 시의 PickedRange 값 설정
   const CloseCal = () => {
-    if (selectedDate !== null) {
+    if (selectedDate.length > 1) {
       setPickedRange(selectedDate);
     } else {
       setPickedRange([new Date(), new Date()]);
     }
   };
+  console.log("selectedDate: " + selectedDate);
+  console.log("pickedRange: " + PickedRange);
   return (
     <CustomProvider locale={koKR}>
       <DateRangePicker
@@ -137,5 +141,3 @@ const CustomDateRangePicker = () => {
     </CustomProvider>
   );
 };
-
-export default CustomDateRangePicker;

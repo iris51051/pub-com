@@ -5,16 +5,15 @@ import { DownOutlined } from "@ant-design/icons";
 
 const CheckboxGroup = Checkbox.Group;
 
-const options = [
-  { label: "다음", value: "다음" },
-  { label: "네이버", value: "네이버" },
-  { label: "구글", value: "구글" },
-  { label: "페이스북", value: "페이스북" },
-  { label: "인스타그램", value: "인스타그램" },
-  { label: "트위터", value: "트위터" },
-];
-
 const Mdfilter = ({ onValueChange }) => {
+  const options = [
+    { label: "다음", value: "다음" },
+    { label: "네이버", value: "네이버" },
+    { label: "구글", value: "구글" },
+    { label: "페이스북", value: "페이스북" },
+    { label: "인스타그램", value: "인스타그램" },
+    { label: "트위터", value: "트위터" },
+  ];
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
